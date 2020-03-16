@@ -1,5 +1,6 @@
 {% set name = "imagecodecs" %}
 {% set version = "2020.2.18" %}
+{% set sha256 = "c019b19438dff31365fee3002b438992c16bc9955a036f466c600d80699cb5a2" %}
 
 package:
   name: "{{ name|lower }}"
@@ -7,7 +8,7 @@ package:
 
 source:
   url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
-  sha256: c019b19438dff31365fee3002b438992c16bc9955a036f466c600d80699cb5a2
+  sha256: {{ sha256 }}
 
 build:
   number: 0
@@ -18,26 +19,17 @@ build:
 
 requirements:
   host:
+    - python
     - pip
-    - python
   run:
-    - numpy >=1.16.6
     - python
+    - numpy >=1.16.6
 
 test:
   imports:
     - imagecodecs
   commands:
     - imagecodecs --help
-  requires:
-    - bitshuffle
-    - blosc
-    - czifile
-    - lz4
-    - pytest
-    - python-lzf
-    - zopflipy
-    - zstd
 
 about:
   home: "https://www.lfd.uci.edu/~gohlke/"
